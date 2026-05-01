@@ -3,19 +3,18 @@ const targetDate = new Date(startDate);
 targetDate.setDate(startDate.getDate() + 90);
 
 const messages = [
-    "Limited availability for the right opportunity.",
-    "Operational chaos does not fix itself.",
-    "Structure creates speed.",
-    "The right company gets execution, ownership and control.",
+    "Available now. Not forever.",
     "Momentum beats waiting.",
     "Complexity is where I create value.",
-    "From scattered resources to scalable operations.",
-    "Available now. Not forever."
+    "Structure creates speed.",
+    "Operational leverage wins.",
+    "The market notices operators."
 ];
 
 let currentMessageIndex = 0;
 
 function updateCountdown() {
+
     const now = new Date();
     const difference = targetDate - now;
 
@@ -29,24 +28,64 @@ function updateCountdown() {
 }
 
 function updateMessage() {
-    const messageElement = document.getElementById("urgency-message");
 
-    messageElement.style.opacity = 0;
+    const element =
+        document.getElementById("urgency-message");
+
+    element.style.opacity = 0;
 
     setTimeout(() => {
-        messageElement.innerHTML = messages[currentMessageIndex];
-        messageElement.style.opacity = 1;
+
+        element.innerHTML =
+            messages[currentMessageIndex];
+
+        element.style.opacity = 1;
 
         currentMessageIndex++;
 
-        if (currentMessageIndex >= messages.length) {
+        if(currentMessageIndex >= messages.length){
             currentMessageIndex = 0;
         }
-    }, 300);
+
+    },300);
 }
 
-setInterval(updateCountdown, 1000);
-setInterval(updateMessage, 10000);
+
+function animateCounters(){
+
+    const counters =
+        document.querySelectorAll(".counter");
+
+    counters.forEach(counter => {
+
+        const target =
+            Number(counter.dataset.target);
+
+        let current = 0;
+
+        const interval = setInterval(()=>{
+
+            current += Math.ceil(target / 40);
+
+            if(current >= target){
+
+                current = target;
+                clearInterval(interval);
+
+            }
+
+            counter.innerHTML =
+                current + "+";
+
+        },40);
+
+    });
+
+}
+
+setInterval(updateCountdown,1000);
+setInterval(updateMessage,10000);
 
 updateCountdown();
 updateMessage();
+animateCounters();
