@@ -1,15 +1,17 @@
-const targetDate = new Date();
-targetDate.setDate(targetDate.getDate() + 90);
+// Countdown starts from May 1, 2026
+const startDate = new Date("2026-05-01T00:00:00");
+const targetDate = new Date(startDate);
+targetDate.setDate(startDate.getDate() + 90);
 
 const messages = [
-    "Only 90 days to rebuild the next version of you.",
-    "Every day you wait, someone else gets sharper.",
-    "Your future does not need permission.",
-    "This is where momentum is built.",
-    "Opportunities reward the visible.",
-    "Small steps. Daily proof. No hiding.",
+    "Only a limited window to rebuild.",
+    "Every day is a visible signal.",
+    "Momentum beats waiting.",
     "The market notices people who move.",
-    "Your comeback clock is ticking."
+    "Small steps. Daily proof. No hiding.",
+    "Your comeback clock is ticking.",
+    "This is where momentum is built.",
+    "Opportunities reward the visible."
 ];
 
 let currentMessageIndex = 0;
