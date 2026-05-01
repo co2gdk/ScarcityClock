@@ -2,16 +2,19 @@ const targetDate = new Date();
 targetDate.setDate(targetDate.getDate() + 90);
 
 const messages = [
-    "Opportunities are closing...",
-    "Others are moving faster...",
-    "Your competitive window is shrinking...",
-    "This is not rehearsal...",
-    "Time is your rarest asset...",
-    "Last chance to act..."
+    "Only 90 days to rebuild the next version of you.",
+    "Every day you wait, someone else gets sharper.",
+    "Your future does not need permission.",
+    "This is where momentum is built.",
+    "Opportunities reward the visible.",
+    "Small steps. Daily proof. No hiding.",
+    "The market notices people who move.",
+    "Your comeback clock is ticking."
 ];
 
-function updateCountdown() {
+let currentMessageIndex = 0;
 
+function updateCountdown() {
     const now = new Date();
     const difference = targetDate - now;
 
@@ -22,14 +25,21 @@ function updateCountdown() {
 
     document.getElementById("countdown").innerHTML =
         `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
 
-    const randomMessage =
-        messages[Math.floor(Math.random() * messages.length)];
-
+function updateMessage() {
     document.getElementById("urgency-message").innerHTML =
-        randomMessage;
+        messages[currentMessageIndex];
+
+    currentMessageIndex++;
+
+    if (currentMessageIndex >= messages.length) {
+        currentMessageIndex = 0;
+    }
 }
 
 setInterval(updateCountdown, 1000);
+setInterval(updateMessage, 10000);
 
 updateCountdown();
+updateMessage();
