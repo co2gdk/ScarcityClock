@@ -181,3 +181,58 @@ h2 {
 .cta:hover {
     transform: translateY(-3px);
 }
+.profile-wrap {
+    position: relative;
+}
+
+.profile-wrap::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 140px;
+    height: 140px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(34,197,94,0.3);
+
+    animation: radar 3s infinite;
+
+}
+
+.hero::after {
+
+    content: "";
+
+    display: block;
+
+    width: 140px;
+    height: 3px;
+
+    margin: 30px auto;
+
+    background: #22c55e;
+
+    box-shadow: 0 0 30px #22c55e;
+
+}
+
+@keyframes radar {
+
+    0% {
+
+        transform: scale(0.8);
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform: scale(1.6);
+        opacity: 0;
+
+    }
+
+}
