@@ -13,19 +13,36 @@ const messages = [
 
 let currentMessageIndex = 0;
 
+
 function updateCountdown() {
 
     const now = new Date();
     const difference = targetDate - now;
 
-    const days = Math.max(0, Math.floor(difference / (1000 * 60 * 60 * 24)));
-    const hours = Math.max(0, Math.floor((difference / (1000 * 60 * 60)) % 24));
-    const minutes = Math.max(0, Math.floor((difference / 1000 / 60) % 60));
-    const seconds = Math.max(0, Math.floor((difference / 1000) % 60));
+    const days = Math.max(
+        0,
+        Math.floor(difference / (1000 * 60 * 60 * 24))
+    );
+
+    const hours = Math.max(
+        0,
+        Math.floor((difference / (1000 * 60 * 60)) % 24)
+    );
+
+    const minutes = Math.max(
+        0,
+        Math.floor((difference / 1000 / 60) % 60)
+    );
+
+    const seconds = Math.max(
+        0,
+        Math.floor((difference / 1000) % 60)
+    );
 
     document.getElementById("countdown").innerHTML =
         `${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
+
 
 function updateMessage() {
 
@@ -44,10 +61,13 @@ function updateMessage() {
         currentMessageIndex++;
 
         if(currentMessageIndex >= messages.length){
+
             currentMessageIndex = 0;
+
         }
 
     },300);
+
 }
 
 
@@ -70,6 +90,7 @@ function animateCounters(){
             if(current >= target){
 
                 current = target;
+
                 clearInterval(interval);
 
             }
@@ -82,6 +103,7 @@ function animateCounters(){
     });
 
 }
+
 
 setInterval(updateCountdown,1000);
 setInterval(updateMessage,10000);
